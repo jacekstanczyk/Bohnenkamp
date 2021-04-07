@@ -2,6 +2,8 @@
 
 void uaktualnijBaze(vector<Tpozycja> &glowna, vector<Tpozycja> &nowe)
 {
+    int dodano = 0;
+    int uaktualniono = 0;
 
     if (glowna.size() > 0 && nowe.size() > 0) // sprawdza czy obie bazy nie sa puste
     {
@@ -16,6 +18,7 @@ void uaktualnijBaze(vector<Tpozycja> &glowna, vector<Tpozycja> &nowe)
                 if (pozycja.numer < glowna[indeks].numer)
                 {
                     glowna.push_back(pozycja);
+                    dodano++;
                     //cout << "w pozycji mniejsza" << endl;
                     break;
                 }
@@ -39,6 +42,8 @@ void uaktualnijBaze(vector<Tpozycja> &glowna, vector<Tpozycja> &nowe)
 
                     if (indeks < glownaSize)
                         indeks++;
+
+                    uaktualniono++;
                     break;
                 }
 
@@ -52,10 +57,13 @@ void uaktualnijBaze(vector<Tpozycja> &glowna, vector<Tpozycja> &nowe)
                 {
                     //cout << "w pozycji wieksza" << endl;
                     glowna.push_back(pozycja);
+                    dodano++;
                     break;
                 }
             }
         }
         sort(glowna.begin(), glowna.end());
+        cout << "Dodano : " << dodano << endl;
+        cout << "Uaktualniono : " << uaktualniono << endl;
     }
 }
