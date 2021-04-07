@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "eanpoprawnosc.h"
 
 using namespace std;
 
@@ -12,6 +13,7 @@ void raport(std::vector<Tpozycja> &a)
     tymczasowaLista.clear();               //czyszczenie zawartosci vectora
     int iloscpozycji = 0;
     int ean = 0;
+    int eanBlad = 0;
     int bieznik = 0;
     int rozmiar = 0;
     int producent = 0;
@@ -28,6 +30,11 @@ void raport(std::vector<Tpozycja> &a)
         {
             powtorki++;
             cout << "Powtorka : " << pozycja.numer << endl;
+        }
+        if (!eanpoprawnosc(pozycja.ean)) //jesli EAN niepoprawny
+        {
+            eanBlad++;
+            cout << "EAN Blad : " << pozycja.numer << " " << pozycja.ean << endl;
         }
 
         poprzedni = pozycja.numer;
@@ -71,6 +78,7 @@ void raport(std::vector<Tpozycja> &a)
 
     cout << "Wszystkich pozycji : " << iloscpozycji << endl;
     cout << "Brak EAN : " << ean << endl;
+    cout << "Blad EAN : " << eanBlad << endl;
     cout << "Brak Bieznik : " << bieznik << endl;
     cout << "Brak Rozmiar : " << rozmiar << endl;
     cout << "Brak Producent : " << producent << endl;
