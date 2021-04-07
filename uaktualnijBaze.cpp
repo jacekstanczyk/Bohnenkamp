@@ -26,24 +26,49 @@ void uaktualnijBaze(vector<Tpozycja> &glowna, vector<Tpozycja> &nowe)
                 if (pozycja.numer == glowna[indeks].numer)
                 {
                     //cout << "w pozycji rowna" << endl;
+                    bool czyUaktualniano = false;
 
-                    if (glowna[indeks].ean == 0)
+                    if (glowna[indeks].ean == 0 && pozycja.ean != 0)
+                    {
                         glowna[indeks].ean = pozycja.ean;
-                    if (glowna[indeks].bieznik == "")
+                        czyUaktualniano = true;
+                    }
+
+                    if (glowna[indeks].bieznik == "" && pozycja.bieznik != "")
+                    {
                         glowna[indeks].bieznik = pozycja.bieznik;
-                    if (glowna[indeks].rozmiar == "")
+                        czyUaktualniano = true;
+                    }
+
+                    if (glowna[indeks].rozmiar == "" && pozycja.rozmiar != "")
+                    {
                         glowna[indeks].rozmiar = pozycja.rozmiar;
-                    if (glowna[indeks].producent == "")
+                        czyUaktualniano = true;
+                    }
+
+                    if (glowna[indeks].producent == "" && pozycja.producent != "")
+                    {
                         glowna[indeks].producent = pozycja.producent;
-                    if (glowna[indeks].ilosc == 0)
+                        czyUaktualniano = true;
+                    }
+
+                    if (glowna[indeks].ilosc == 0 && pozycja.ilosc != 0)
+                    {
                         glowna[indeks].ilosc = pozycja.ilosc;
-                    if (glowna[indeks].cena == 0)
+                        czyUaktualniano = true;
+                    }
+
+                    if (glowna[indeks].cena == 0 && pozycja.cena != 0)
+                    {
                         glowna[indeks].cena = pozycja.cena;
+                        czyUaktualniano = true;
+                    }
 
                     if (indeks < glownaSize)
                         indeks++;
 
-                    uaktualniono++;
+                    if (czyUaktualniano == true)
+                        uaktualniono++;
                     break;
                 }
 
