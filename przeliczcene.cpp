@@ -23,11 +23,106 @@ void przeliczCeneSkrypt(std::vector<Tpozycja> &a, std::string plik)
     {
         if (pozycja.czy_modyfikowano_cene == false)
         {
+            if (pozycja.producent == "ALLIANCE")
+            {
+                if (szukaj(pozycja.rozmiar, "AGRI STAR II"))
+                {
+                    pozycja.cena /= 0.835;
+                    pozycja.czy_modyfikowano_cene = true;
+                    continue;
+                }
+                else if (szukaj(pozycja.rozmiar, "AGRISTAR II"))
+                {
+                    pozycja.cena /= 0.835;
+                    pozycja.czy_modyfikowano_cene = true;
+                    continue;
+                }
+                else if (szukaj(pozycja.rozmiar, "Agristar II"))
+                {
+                    pozycja.cena /= 0.835;
+                    pozycja.czy_modyfikowano_cene = true;
+                    continue;
+                }
+                else if (szukaj(pozycja.rozmiar, "FARMPRO"))
+                {
+                    pozycja.cena /= 0.852;
+                    pozycja.czy_modyfikowano_cene = true;
+                    continue;
+                }
+
+                pozycja.cena /= 0.852;
+                pozycja.czy_modyfikowano_cene = true;
+                continue;
+            }
+        }
+
+        if (pozycja.czy_modyfikowano_cene == false)
+        {
             if (pozycja.producent == "CEAT")
             {
-                pozycja.cena /= 0.87;
+                pozycja.cena /= 0.875;
                 pozycja.czy_modyfikowano_cene = true;
-                cout << "W CEAT" << endl;
+                continue;
+            }
+        }
+
+        if (pozycja.czy_modyfikowano_cene == false)
+        {
+            if (pozycja.producent == "DELI")
+            {
+                pozycja.cena /= 0.75;
+                pozycja.czy_modyfikowano_cene = true;
+                continue;
+            }
+        }
+
+        if (pozycja.czy_modyfikowano_cene == false)
+        {
+            if (pozycja.producent == "KENDA")
+            {
+                pozycja.cena /= 0.75;
+                pozycja.czy_modyfikowano_cene = true;
+                continue;
+            }
+        }
+
+        if (pozycja.czy_modyfikowano_cene == false)
+        {
+            if (pozycja.producent == "DONG")
+            {
+                pozycja.cena /= 0.745;
+                pozycja.czy_modyfikowano_cene = true;
+                continue;
+            }
+        }
+
+        if (pozycja.czy_modyfikowano_cene == false)
+        {
+            if (pozycja.producent == "NEXEN")
+            {
+                pozycja.cena /= 0.745;
+                pozycja.czy_modyfikowano_cene = true;
+                continue;
+            }
+        }
+
+        if (pozycja.czy_modyfikowano_cene == false)
+        {
+            if (pozycja.producent == "GALAXY")
+            {
+                pozycja.cena /= 0.84;
+                pozycja.czy_modyfikowano_cene = true;
+                continue;
+            }
+        }
+
+        if (pozycja.czy_modyfikowano_cene == false)
+        {
+            if (pozycja.producent == "DEESTONE")
+            {
+                pozycja.cena /= 0.85;
+                pozycja.czy_modyfikowano_cene = true;
+                continue;
             }
         }
     }
@@ -36,9 +131,18 @@ void przeliczCeneSkrypt(std::vector<Tpozycja> &a, std::string plik)
     {
         if (pozycja.czy_modyfikowano_cene == false)
         {
-            pozycja.cena /= 0.81;
+            pozycja.cena /= 0.84;
             pozycja.czy_modyfikowano_cene = true;
-            cout << "W pozostalych" << endl;
+            continue;
         }
     }
+}
+
+bool szukaj(std::string &tekst, std::string szukanaFraza)
+{
+    size_t znalezionaPozycja = tekst.find(szukanaFraza);
+    if (znalezionaPozycja == std::string::npos)
+        return false;
+    else
+        return true;
 }
